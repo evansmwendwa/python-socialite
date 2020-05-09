@@ -60,7 +60,7 @@ user = {
 }
 ```
 
-### Config Options
+## Config Options
 
 The config must be a dict containing keys of any of the supported providers
 
