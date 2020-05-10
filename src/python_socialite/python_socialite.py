@@ -4,6 +4,7 @@ from python_socialite.drivers.google import GoogleProvider
 
 class OAuthProvider:
     def __init__(self, driver, config):
+        """Initialize default provider."""
         credentials = config.get(driver)
         if driver == "google":
             self.provider = GoogleProvider(credentials)

@@ -35,7 +35,7 @@ def tests(session):
 
 @nox.session
 def cover(session):
-    """Coverage analysis"""
+    """Coverage analysis."""
     session.install("coverage")
     session.run("coverage", "report", "--show-missing", "--fail-under=90")
     session.run("coverage", "erase")
@@ -43,7 +43,7 @@ def cover(session):
 
 @nox.session
 def coverage_upload(session):
-    """Upload coverage report to codacy"""
+    """Upload coverage report to codacy."""
     session.install("codacy-coverage")
     session.run("python-codacy-coverage", "-r", "coverage.xml")
 

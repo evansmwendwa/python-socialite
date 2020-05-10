@@ -20,6 +20,7 @@ class TestDriver(AbstractDriver):
     __test__ = False
 
     def __init__(self, config):
+        """Initialize test class."""
         super().__init__(config)
         self.scopes = config.get("scopes", ["openid", "email", "profile"])
 
@@ -35,7 +36,7 @@ class TestDriver(AbstractDriver):
     def map_user_to_dict(self, raw_user):
         super().map_user_to_dict(raw_user)
 
-    def get_code_fields(self, state):
+    def get_code_fields(self, state=None):
         fields = super().get_code_fields(state)
         return fields
 

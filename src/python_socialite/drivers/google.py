@@ -20,9 +20,9 @@ class GoogleProvider(AbstractDriver):
         fields["grant_type"] = "authorization_code"
         return fields
 
-    def get_user_by_token(self, token):
+    def get_user_by_token(self, access_token):
         url = "https://www.googleapis.com/oauth2/v3/userinfo"
-        headers = {"Authorization": f"Bearer {token}"}
+        headers = {"Authorization": f"Bearer {access_token}"}
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         return response.json()

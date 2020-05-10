@@ -4,7 +4,6 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/277f72118617436291eced30bac036a8)](https://www.codacy.com/manual/evans.mwendwa/python-socialite?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=evansmwendwa/python-socialite&amp;utm_campaign=Badge_Grade)
 <a href="https://pypi.python.org/pypi/python_socialite">
 <img src="https://img.shields.io/pypi/v/python_socialite.svg" /></a>
-<a href="https://travis-ci.org/evansmwendwa/python_socialite"><img src="https://travis-ci.org/evansmwendwa/python_socialite.svg?branch=master" /></a>
 <a href=""><img src="https://github.com/evansmwendwa/python-socialite/workflows/build/badge.svg" /></a>
 
 </p>
@@ -16,9 +15,9 @@ Simple and convenient oAuth Login user provider for Facebook, Twitter, LinkedIn,
 -   Straighforward unopinionated authentication
 -   Can be implemented in any python framework
 
-# Usage
+## Usage
 
-## Generate redirect uri
+### Generate redirect uri
 ```python
 from python_socialite import AuthProvider
 
@@ -35,7 +34,7 @@ redirect_url = provider.get_auth_url()
 # redirect user to the redirect_url using your frameworks supported redirect
 ```
 
-## Retrieving Access Token and User
+### Retrieving Access Token and User
 
 ```python
 code = "" # read code from GET variables
@@ -50,7 +49,7 @@ except:
 
 Hook the returned user profile to your apps authentication.
 
-## Token Template
+### Token Template
 
 **NB:** Token attributes might vary between providers. Here's a sample returned by Google
 
@@ -64,7 +63,7 @@ Hook the returned user profile to your apps authentication.
 }
 ```
 
-## User Template
+### User Template
 
 ```python
 user = {
@@ -79,11 +78,11 @@ user = {
 
 The `raw` attribute contains all user data as returned by the oAuth provider. Fields in this attribute can be different across different oAuth providers
 
-## Requesting Scopes
+### Requesting Scopes
 
 By default the following scopes are requested
 
-```
+```shell
 openid, email, profile
 ```
 
@@ -95,7 +94,7 @@ auth_url = provider.set_scopes(["openid", "email", "profile"]).get_auth_url()
 ```
 **NB:** *If no scopes are set in the config or in code the default scopes will be used*
 
-## Config Options
+### Config Options
 
 The config must be a dict containing keys of any of the supported providers
 
