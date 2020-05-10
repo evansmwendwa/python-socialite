@@ -1,6 +1,24 @@
 #!/usr/bin/env python
 # fmt: off
+import codecs
+import os.path
 from setuptools import setup, find_packages  # type: ignore
+
+
+def read(rel_path):
+    here = os.path.abspath(os.path.dirname(__file__))
+    with codecs.open(os.path.join(here, rel_path), 'r') as fp:
+        return fp.read()
+
+
+def get_version(rel_path):
+    for line in read(rel_path).splitlines():
+        if line.startswith('__version__'):
+            delim = '"' if '"' in line else "'"
+            return line.split(delim)[1]
+    else:
+        raise RuntimeError("Unable to find version string.")
+
 
 with open("README.md") as readme_file:
     readme = readme_file.read()
@@ -30,7 +48,7 @@ setup(
     ),
     setup_requires=[],
     url="https://github.com/evansmwendwa/python-socialite",
-    version="0.1.2",
+    version=get_version("src/python_socialite/__init__.py"),
     zip_safe=False,
 )
 # fmt: on

@@ -7,6 +7,7 @@
 <a href=""><img src="https://github.com/evansmwendwa/python-socialite/workflows/build/badge.svg" /></a> [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/277f72118617436291eced30bac036a8)](https://www.codacy.com/manual/evans.mwendwa/python-socialite?utm_source=github.com&utm_medium=referral&utm_content=evansmwendwa/python-socialite&utm_campaign=Badge_Coverage)
 
 </p>
+
 Simple and convenient oAuth Login user provider for Facebook, Twitter, LinkedIn, Google, GitHub, GitLab and Bitbucket. Inspired by [Laravel Socialite](https://laravel.com/docs/master/socialite)
 
 ## Features
