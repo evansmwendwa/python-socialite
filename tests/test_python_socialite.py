@@ -91,9 +91,8 @@ def test_get_user_google(mock_requests):
         "name": "John Doe",
         "email": "john@example.com",
     }
-    access_token = "xxxxx"
     provider = OAuthProvider("google", config)
-    user = provider.get_user(access_token)
+    user = provider.get_user("xxxxxx")
 
     if user.get("provider") != "google":
         raise AssertionError
