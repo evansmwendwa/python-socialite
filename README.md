@@ -15,7 +15,7 @@ Simple and convenient oAuth Login user provider for Facebook, Twitter, LinkedIn,
 
 # Usage
 
-## Generate redirect url
+## Generate redirect uri
 ```python
 from python_socialite import AuthProvider
 
@@ -39,13 +39,27 @@ code = "" # read code from GET variables
 provider = AuthProvider("google", config)
 
 try:
-    access_token = provider.get_access_token(code)
-    user = provider.get_user(access_token)
+    token = provider.get_token(code)
+    user = provider.get_user(token["access_token"])
 except:
     pass
 ```
 
 Hook the returned user profile to your apps authentication.
+
+## Token Template
+
+**NB:** Token attributes might vary between providers. Here's a sample returned by Google
+
+```json
+{
+   "access_token":"ya29.***",
+   "expires_in":3599,
+   "scope":"https://www.googleapis.com/auth/userinfo.profile openid",
+   "token_type":"Bearer",
+   "id_token":"***jwt***"
+}
+```
 
 ## User Template
 
@@ -60,23 +74,37 @@ user = {
 }
 ```
 
+The `raw` attribute contains all user data as returned by the oAuth provider. Fields in this attribute can be different across different oAuth providers
+
+## Requesting Scopes
+
+By default the following scopes are requested
+
+```
+openid, email, profile
+```
+
+You can override requested scopes by adding them to the provider config or using `set_scopes` method
+
+```python
+provider = OAuthProvider("google", config)
+auth_url = provider.set_scopes(["openid", "email", "profile"]).get_auth_url()
+```
+**NB:** *If no scopes are set in the config or in code the default scopes will be used*
+
 ## Config Options
 
 The config must be a dict containing keys of any of the supported providers
 
 ```python
-# each provider config must have at least the following three options
-options = {
-    "client_id": "",
-    "client_secret": "",
-    "redirect_uri": ""
-}
+# each provider key must have client_id, client_secret and redirect_url
 
 config = {
     "google": {
         "client_id": "",
         "client_secret": "",
-        "redirect_uri": ""
+        "redirect_url": "",
+        "scopes": [] # optional
     },
     "facebook": {},
     "twitter": {},
