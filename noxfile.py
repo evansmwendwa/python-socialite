@@ -46,7 +46,7 @@ def lint(session):
     files = ["tests"] + [str(p) for p in Path(".").glob("*.py")]
     session.run("black", "--check", *files)
     session.run("flake8", *files)
-    session.run("mypy", *files)
+    session.run("mypy", "--ignore-missing", *files)
     session.run("python", "setup.py", "check", "--metadata", "--strict")
     if "--skip_manifest_check" in session.posargs:
         pass

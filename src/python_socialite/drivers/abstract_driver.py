@@ -13,11 +13,11 @@ class AbstractDriver(metaclass=ABCMeta):
 
     @abstractmethod
     def get_auth_url(self):
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def get_token_url(self):
-        pass
+        raise NotImplementedError
 
     def set_scopes(self, scopes):
         self.scopes = scopes
@@ -68,11 +68,11 @@ class AbstractDriver(metaclass=ABCMeta):
 
     @abstractmethod
     def get_user_by_token(self, access_token):
-        pass
+        raise NotImplementedError
 
     @abstractmethod
-    def map_user_to_dict(self):
-        pass
+    def map_user_to_dict(self, raw_user):
+        raise NotImplementedError
 
     def get_user(self, access_token):
         raw_user = self.get_user_by_token(access_token)

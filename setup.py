@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+# fmt: off
 from setuptools import setup, find_packages  # type: ignore
 
 with open("README.md") as readme_file:
@@ -16,7 +16,7 @@ setup(
         "Programming Language :: Python :: 3",
     ],
     description="Simple Python oAuth Login",
-    install_requires=[],
+    install_requires=["requests"],
     license="MIT license",
     long_description=readme,
     long_description_content_type="text/markdown",
@@ -25,9 +25,12 @@ setup(
     keywords="python_socialite",
     name="python_socialite",
     package_dir={"": "src"},
-    packages=find_packages(include=["src/python_socialite", "src/python_socialite.*"]),
+    packages=find_packages(
+        include=["src/python_socialite", "src/python_socialite.*"]
+    ),
     setup_requires=[],
     url="https://github.com/evansmwendwa/python_socialite",
     version="0.1.0",
     zip_safe=False,
 )
+# fmt: on
