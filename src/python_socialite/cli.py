@@ -2,7 +2,7 @@
 import sys  # pragma: no cover
 
 
-def main():
+def main():  # pragma: no cover
     return 0
 
 
