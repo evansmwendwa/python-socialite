@@ -5,6 +5,7 @@ from python_socialite.drivers.abstract_user import abstract_user
 
 class GoogleProvider(AbstractDriver):
     def __init__(self, config):
+        """Initialize Google provider."""
         super().__init__(config)
         self.scopes = config.get("scopes", ["openid", "email", "profile"])
 
