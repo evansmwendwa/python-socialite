@@ -53,7 +53,8 @@ def token():
 
 
 def test_python_socialite():
-    assert python_socialite is not None
+    if python_socialite is None:
+        raise AssertionError
 
 
 def test_get_auth_url():
@@ -62,7 +63,8 @@ def test_get_auth_url():
     parts = list(parse.urlparse(auth_url))
     query = dict(parse.parse_qsl(parts[4]))
 
-    assert query.get("client_id") == "123"
+    if query.get("client_id") != "123":
+        raise AssertionError
 
 
 @patch("python_socialite.drivers.abstract_driver.requests")
@@ -73,8 +75,11 @@ def test_get_token(mock_requests, token):
     provider = OAuthProvider("google", config)
     auth_token = provider.get_token(code)
 
-    assert auth_token.get("access_token") == "123"
-    assert auth_token.get("token_type") == "Bearer"
+    if auth_token.get("access_token") != "123":
+        raise AssertionError
+
+    if auth_token.get("token_type") != "Bearer":
+        raise AssertionError
 
 
 @patch("python_socialite.drivers.google.requests")
@@ -89,9 +94,14 @@ def test_get_user_google(mock_requests):
     provider = OAuthProvider("google", config)
     user = provider.get_user(access_token)
 
-    assert user.get("provider") == "google"
-    assert user.get("id") == "103"
-    assert user.get("email") == "john@example.com"
+    if user.get("provider") != "google":
+        raise AssertionError
+
+    if user.get("id") != "103":
+        raise AssertionError
+
+    if user.get("email") != "john@example.com":
+        raise AssertionError
 
 
 def test_set_scopes():
@@ -116,4 +126,5 @@ def test_abstract_methods():
         driver.map_user_to_dict({})
 
     fields = driver.get_code_fields("sample")
-    assert fields.get("state") == "sample"
+    if fields.get("state") != "sample":
+        raise AssertionError

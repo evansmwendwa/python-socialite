@@ -1,12 +1,10 @@
 # This workflow will install Python dependencies, run tests and lint with a variety of Python versions
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: Python package
+name: build
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 jobs:
@@ -15,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.5, 3.6, 3.7, 3.8]
+        python-version: [3.8]
 
     steps:
     - uses: actions/checkout@v2
@@ -23,19 +21,30 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
         python -m pip install nox
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
     - name: Lint with nox
       run: |
         # stop the build if there are Python syntax errors or undefined names
         nox -s lint
+
     - name: Run Unit Tests
       run: |
         nox -s tests
+
+    - name: Upload Coverage Report
+      env:
+        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      run: |
+        # upload coverage report to codacy
+        nox -s coverage_upload
+
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -50,6 +59,7 @@ jobs:
             - Second Change
           draft: true
           prerelease: true
+
     - name: Build and publish package
       env:
         TWINE_USERNAME: __token__
