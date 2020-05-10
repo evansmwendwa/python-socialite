@@ -37,5 +37,8 @@ jobs:
       run: |
         nox -s tests
     - name: Build and publish package
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.pypi_password }}
       run: |
         nox -s publish
