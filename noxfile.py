@@ -14,6 +14,7 @@ lint_dependencies = [
     "flake8-bugbear",
     "mypy",
     "check-manifest",
+    "codacy-coverage",
 ]
 
 
@@ -26,7 +27,7 @@ def tests(session):
         "--cov=python_socialite",
         "--cov-config",
         ".coveragerc",
-        "--cov-report=",
+        "--cov-report=xml",
         *tests
     )
     session.notify("cover")
@@ -36,8 +37,15 @@ def tests(session):
 def cover(session):
     """Coverage analysis"""
     session.install("coverage")
-    session.run("coverage", "report", "--show-missing", "--fail-under=0")
+    session.run("coverage", "report", "--show-missing", "--fail-under=90")
     session.run("coverage", "erase")
+
+
+@nox.session
+def coverage_upload(session):
+    """Upload coverage report to codacy"""
+    session.install("codacy-coverage")
+    session.run("python-codacy-coverage", "-r", "coverage.xml")
 
 
 @nox.session(python="3.8")
