@@ -39,7 +39,9 @@ jobs:
         nox -s tests
 
     - name: Upload Coverage Report
-        run: |
+      env:
+        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      run: |
         # upload coverage report to codacy
         nox -s coverage_upload
 
