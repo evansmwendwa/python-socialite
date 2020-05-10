@@ -30,7 +30,7 @@ setup(
     ),
     setup_requires=[],
     url="https://github.com/evansmwendwa/python-socialite",
-    version="0.1.1",
+    version="0.1.2",
     zip_safe=False,
 )
 # fmt: on

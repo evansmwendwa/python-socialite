@@ -8,7 +8,7 @@ Backwards-compatible changes increment the minor version number only.
 Version 0.1.2
 -------------
 
-Released: [Pending]
+Released: 2020-05-10
 
 -   Setup Google Authentication
 -   Setup Linting and unit tests
