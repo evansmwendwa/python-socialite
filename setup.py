@@ -29,8 +29,8 @@ setup(
         include=["src/python_socialite", "src/python_socialite.*"]
     ),
     setup_requires=[],
-    url="https://github.com/evansmwendwa/python_socialite",
-    version="0.1.0",
+    url="https://github.com/evansmwendwa/python-socialite",
+    version="0.1.1",
     zip_safe=False,
 )
 # fmt: on

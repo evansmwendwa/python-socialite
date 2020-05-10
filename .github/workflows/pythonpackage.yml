@@ -36,6 +36,20 @@ jobs:
     - name: Run Unit Tests
       run: |
         nox -s tests
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
+          draft: true
+          prerelease: true
     - name: Build and publish package
       env:
         TWINE_USERNAME: __token__
