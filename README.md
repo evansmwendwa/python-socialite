@@ -1,11 +1,12 @@
 # python-socialite
 <p align="center">
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/277f72118617436291eced30bac036a8)](https://www.codacy.com/manual/evans.mwendwa/python-socialite?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=evansmwendwa/python-socialite&amp;utm_campaign=Badge_Grade)
 <a href="https://pypi.python.org/pypi/python_socialite">
 <img src="https://img.shields.io/pypi/v/python_socialite.svg" /></a>
 <a href="https://travis-ci.org/evansmwendwa/python_socialite"><img src="https://travis-ci.org/evansmwendwa/python_socialite.svg?branch=master" /></a>
 <a href=""><img src="https://github.com/evansmwendwa/python-socialite/workflows/build/badge.svg" /></a>
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/277f72118617436291eced30bac036a8)](https://www.codacy.com/manual/evans.mwendwa/python-socialite?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=evansmwendwa/python-socialite&amp;utm_campaign=Badge_Grade)
+
 </p>
 Simple and convenient oAuth Login user provider for Facebook, Twitter, LinkedIn, Google, GitHub, GitLab and Bitbucket. Inspired by [Laravel Socialite](https://laravel.com/docs/master/socialite)
 
