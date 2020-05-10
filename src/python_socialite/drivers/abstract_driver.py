@@ -5,6 +5,7 @@ from urllib import parse
 
 class AbstractDriver(metaclass=ABCMeta):
     def __init__(self, config):
+        """Initialize default attributes."""
         self.client_id = config.get("client_id")
         self.client_secret = config.get("client_secret")
         self.redirect_url = config.get("redirect_url")
