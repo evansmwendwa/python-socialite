@@ -1,4 +1,3 @@
-
 Release Notes
 =============
 
@@ -11,6 +10,6 @@ Version 0.1.2
 
 Released: 2020-05-10
 
-* Setup Google Authentication
-* Setup Linting and unit tests
-* Setup Github Actions
+-   Setup Google Authentication
+-   Setup Linting and unit tests
+-   Setup Github Actions
