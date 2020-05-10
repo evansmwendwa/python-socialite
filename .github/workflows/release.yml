@@ -4,9 +4,6 @@
 name: build_release
 
 on:
-  push:
-    branches: [ release-* ]
-
   pull_request:
     branches: [ master ]
 
